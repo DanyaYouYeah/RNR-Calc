@@ -1,0 +1,58 @@
+<html>
+<head>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <link rel="stylesheet" href="vue-material.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"  rel="stylesheet">
+  <link href="styles.css"  rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <script src="vue-material.js"></script>
+  <title> RNR - Calc </title>
+</head>
+
+
+<body>
+  <div id ="bHeader">
+  <img src ="images/logo.png">
+</div>
+  <div id = "firstTest"  v-md-theme="'default'">
+    <md-tabs md-fixed v-on:change="show=!show">
+    <md-tab id="movies" md-label="Movies" >
+      <div id ="firstTestContent" v-if="show" >
+      <p><span class="md-title">{{questionNumber}}/5</span>
+      <p><span class="md-subheading">{{currentQuestion}}</span>
+      <p><span class="md-body-2" v-if="discriptionReady">{{questionDiscription}}</span>
+      <p><span class="md-body-1" v-if="exampleReady">{{questionExample}}</span>
+
+    </div>
+    </md-tab>
+
+  </md-tabs>
+</div>
+
+<div id = "secondTest"  v-md-theme="'default'">
+  <md-tabs md-fixed v-on:change="show=!show">
+  <md-tab id="movies" md-label="Movies">
+    <div id ="firstTestContent" v-if="show" >
+    <p>ШКУРА</p>
+  </div>
+  </md-tab>
+
+</md-tabs>
+</div>
+
+
+<div id = "thirdTest"  v-md-theme="'default'">
+  <md-tabs md-fixed v-on:change="show=!show">
+  <md-tab id="movies" md-label="Movies">
+    <div id ="firstTestContent" v-if="show" >
+    <p>ШКУРА</p>
+  </div>
+  </md-tab>
+
+</md-tabs>
+</div>
+
+
+  <script src ="application.js"></script>
+</body>
+</html>
