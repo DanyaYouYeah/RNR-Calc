@@ -20,18 +20,18 @@
     <md-tabs md-fixed v-on:change="show=!show">
     <md-tab id="first_test" md-label="Основные расходы" md-icon="looks_one">
       <div id ="firstTestContent" v-if="show" >
-      <p><span class="md-title">{{questionNumber}}/5</span>
+      <p><span class="md-title">{{questionNumber}}/{{questionNumbers}}</span>
       <p><span class="md-subheading">{{currentQuestion}}</span>
       <p><span class="md-body-2" v-if="discriptionReady">{{questionDiscription}}</span>
       <p><span class="md-body-1" v-if="exampleReady">{{questionExample}}</span>
         <form novalidate @submit.stop.prevent="submit">
           <md-input-container>
             <label>{{defaultCaption}}</label>
-            <md-input v-model=currentValue></md-input>
+            <md-input v-model=inputValue></md-input>
           </md-input-container>
         </form>
-        <md-button class="md-raised md-accent">Назад</md-button>
-        <md-button class="md-raised md-primary">Далее</md-button>
+        <md-button class="md-raised md-accent" v-on:click="getPrevData">Назад</md-button>
+        <md-button class="md-raised md-primary" v-on:click="getNextData">Далее</md-button>
     </div>
     </md-tab>
 
@@ -45,14 +45,14 @@
   <md-tabs md-fixed v-on:change="show=!show">
   <md-tab id="second_test" md-label="Дополнительные расходы" md-icon="looks_two">
     <div id ="secondTestContent" v-if="show" >
-    <p><span class="md-title">{{questionNumber}}/7</span>
+    <p><span class="md-title">{{questionNumber}}/{{questionNumbers}}</span>
     <p><span class="md-subheading">{{currentQuestion}}</span>
     <p><span class="md-body-2" v-if="discriptionReady">{{questionDiscription}}</span>
     <p><span class="md-body-1" v-if="exampleReady">{{questionExample}}</span>
       <form novalidate @submit.stop.prevent="submit">
         <md-input-container>
           <label>{{defaultCaption}}</label>
-          <md-input v-model=currentValue></md-input>
+          <md-input v-model=inputValue></md-input>
         </md-input-container>
       </form>
       <md-button class="md-raised md-accent">Назад</md-button>
@@ -69,14 +69,14 @@
   <md-tabs md-fixed v-on:change="show=!show">
   <md-tab id="third_test" md-label="Потери" md-icon="looks_3">
     <div id ="thirdTestContent" v-if="show" >
-    <p><span class="md-title">{{questionNumber}}/3</span>
+    <p><span class="md-title">{{questionNumber}}/{{questionNumbers}}</span>
     <p><span class="md-subheading">{{currentQuestion}}</span>
     <p><span class="md-body-2" v-if="discriptionReady">{{questionDiscription}}</span>
     <p><span class="md-body-1" v-if="exampleReady">{{questionExample}}</span>
       <form novalidate @submit.stop.prevent="submit">
         <md-input-container>
           <label>{{defaultCaption}}</label>
-          <md-input v-model=currentValue></md-input>
+          <md-input v-model=inputValue></md-input>
         </md-input-container>
       </form>
       <md-button class="md-raised md-accent">Назад</md-button>
@@ -93,14 +93,14 @@
   <md-tabs md-fixed v-on:change="show=!show">
   <md-tab id="fourth_test" md-label="Завершающие вопросы" md-icon="looks_4">
     <div id ="fourthTestContent" v-if="show" >
-    <p><span class="md-title">{{questionNumber}}/3</span>
+    <p><span class="md-title">{{questionNumber}}/{{questionNumbers}}</span>
     <p><span class="md-subheading">{{currentQuestion}}</span>
     <p><span class="md-body-2" v-if="discriptionReady">{{questionDiscription}}</span>
     <p><span class="md-body-1" v-if="exampleReady">{{questionExample}}</span>
       <form novalidate @submit.stop.prevent="submit">
         <md-input-container>
           <label>{{defaultCaption}}</label>
-          <md-input v-model=currentValue></md-input>
+          <md-input v-model=inputValue></md-input>
         </md-input-container>
       </form>
       <md-button class="md-raised md-accent">Назад</md-button>
