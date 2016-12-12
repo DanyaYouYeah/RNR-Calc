@@ -21,7 +21,7 @@
     <md-tab id="first_test" md-label="Основные расходы" md-icon="looks_one">
       <div id ="firstTestContent" v-if="show" >
       <p><span class="md-title">{{questionNumber}}/{{questionNumbers}}</span>
-      <p><span class="md-subheading">{{currentQuestion}}</span>
+      <p><span class="md-display-1">{{currentQuestion}}</span>
       <p><span class="md-body-2" v-if="discriptionReady">{{questionDiscription}}</span>
       <p><span class="md-body-1" v-if="exampleReady">{{questionExample}}</span>
         <form novalidate @submit.stop.prevent="submit">
@@ -46,7 +46,7 @@
   <md-tab id="second_test" md-label="Дополнительные расходы" md-icon="looks_two">
     <div id ="secondTestContent" v-if="show" >
     <p><span class="md-title">{{questionNumber}}/{{questionNumbers}}</span>
-    <p><span class="md-subheading">{{currentQuestion}}</span>
+    <p><span class="md-display-1">{{currentQuestion}}</span>
     <p><span class="md-body-2" v-if="discriptionReady">{{questionDiscription}}</span>
     <p><span class="md-body-1" v-if="exampleReady">{{questionExample}}</span>
       <form novalidate @submit.stop.prevent="submit">
@@ -70,7 +70,7 @@
   <md-tab id="third_test" md-label="Потери" md-icon="looks_3">
     <div id ="thirdTestContent" v-if="show" >
     <p><span class="md-title">{{questionNumber}}/{{questionNumbers}}</span>
-    <p><span class="md-subheading">{{currentQuestion}}</span>
+    <p><span class="md-display-1">{{currentQuestion}}</span>
     <p><span class="md-body-2" v-if="discriptionReady">{{questionDiscription}}</span>
     <p><span class="md-body-1" v-if="exampleReady">{{questionExample}}</span>
       <form novalidate @submit.stop.prevent="submit">
@@ -94,7 +94,7 @@
   <md-tab id="fourth_test" md-label="Завершающие вопросы" md-icon="looks_4">
     <div id ="fourthTestContent" v-if="show" >
     <p><span class="md-title">{{questionNumber}}/{{questionNumbers}}</span>
-    <p><span class="md-subheading">{{currentQuestion}}</span>
+    <p><span class="md-display-1">{{currentQuestion}}</span>
     <p><span class="md-body-2" v-if="discriptionReady">{{questionDiscription}}</span>
     <p><span class="md-body-1" v-if="exampleReady">{{questionExample}}</span>
       <form novalidate @submit.stop.prevent="submit">
