@@ -346,6 +346,7 @@ var getResults = new Vue({
   el: '#getResults',
   data:{
   show: false,
+  summ: ''
 },
   methods:{
     getResults: function (){
@@ -356,6 +357,7 @@ var getResults = new Vue({
       }
 
     console.log("OK");
-    }
+  },
+
   }
 })

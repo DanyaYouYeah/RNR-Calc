@@ -117,7 +117,9 @@
 <div id ="ResultButton">
   <md-button class="md-raised md-primary" v-on:click="getResults">Расчитать</md-button>
   <div id = "resultsView" v-if="show">
-    <p><span class="md-title">Стоимость доставки:</span>
+    <p><span class="md-title">Указанная стоимость за одну доставку:</span>
+    <p><span class="md-title">Реальная стоимость одной доставки:</span>
+    <p><span class="md-display-1">{{summ}}</span>
   </div>
 </div>
 </md-whiteframe>
