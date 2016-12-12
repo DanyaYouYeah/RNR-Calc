@@ -115,7 +115,10 @@
 <div id ="getResults" v-md-theme="'default'">
 <md-whiteframe md-elevation="7">
 <div id ="ResultButton">
-  <md-button class="md-raised md-primary">Расчитать</md-button>
+  <md-button class="md-raised md-primary" v-on:click="getResults">Расчитать</md-button>
+  <div id = "resultsView" v-if="show">
+    <p><span class="md-title">Стоимость доставки:</span>
+  </div>
 </div>
 </md-whiteframe>
 </div>
