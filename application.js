@@ -1,3 +1,5 @@
+
+
 defCaption = "Введите кол-во ₽";
 defCaption2 = "Введите кол-во"
 Vue.use(VueMaterial)
@@ -31,10 +33,20 @@ var fourthQuestionDiscription = ['', ''];
 var fourthQuestionExample = ['', ''];
 var fourthAnwsersArray = [];
 
+
+
 Vue.material.theme.register('default', {
   primary: 'orange',
   accent: 'black'
 })
+
+var testCondition = {
+    firstTestComplete : false,
+    secondTestComplete: false,
+    thirdTestComplete: false,
+    fourthTestComplete: false
+};
+
 
 
 var firstTest = new Vue({
@@ -51,11 +63,16 @@ var firstTest = new Vue({
     discriptionReady: true,
     exampleReady: true,
     anwsersQuantity: 0,
-    inputValue: ''
+    inputValue: '',
+    state: testCondition
   },
   methods:{
      getNextData: function () {
+       if (this.currentValue == this.questionNumbers - 1){
+         testCondition.firstTestComplete = true;
+       }
        if (this.currentValue < this.questionNumbers - 1){
+         console.log(parseFloat(this.inputValue));
          firstAnwsersArray[this.currentValue] = this.inputValue;
          ++this.currentValue;
          if ((firstAnwsersArray[this.currentValue] != undefined)|| (firstAnwsersArray[this.currentValue] != 0)){
@@ -125,10 +142,14 @@ var secondTest = new Vue({
     discriptionReady: true,
     exampleReady: true,
     anwsersQuantity: 0,
-    inputValue: ''
+    inputValue: '',
+    state: testCondition
   },
   methods:{
      getNextData: function () {
+       if (this.currentValue == this.questionNumbers - 1){
+         testCondition.secondTestComplete = true;
+       }
        if (this.currentValue < this.questionNumbers - 1){
          secondAnwsersArray[this.currentValue] = this.inputValue;
          ++this.currentValue;
@@ -199,10 +220,14 @@ var thirdTest = new Vue({
     discriptionReady: true,
     exampleReady: true,
     anwsersQuantity: 0,
-    inputValue: ''
+    inputValue: '',
+    state: testCondition
   },
   methods:{
      getNextData: function () {
+       if (this.currentValue == this.questionNumbers - 1){
+         testCondition.thirdTestComplete = true;
+       }
        if (this.currentValue < this.questionNumbers - 1){
          thirdAnwsersArray[this.currentValue] = this.inputValue;
          ++this.currentValue;
@@ -273,10 +298,14 @@ var fourthTest = new Vue({
     discriptionReady: true,
     exampleReady: true,
     anwsersQuantity: 0,
-    inputValue: ''
+    inputValue: '',
+    state: testCondition
   },
   methods:{
      getNextData: function () {
+       if (this.currentValue == this.questionNumbers - 1){
+         testCondition.fourthTestComplete = true;
+       }
        if (this.currentValue < this.questionNumbers - 1){
          fourthAnwsersArray[this.currentValue] = this.inputValue;
          ++this.currentValue;
@@ -346,7 +375,8 @@ var getResults = new Vue({
   el: '#getResults',
   data:{
   show: false,
-  summ: ''
+  summ: '',
+  state: testCondition
 },
   methods:{
     getResults: function (){
@@ -357,6 +387,8 @@ var getResults = new Vue({
       }
 
     console.log("OK");
+    console.log(firstAnwsersArray[0]);
+    console.log(firstAnwsersArray[0] + firstAnwsersArray[1])
   },
 
   }
