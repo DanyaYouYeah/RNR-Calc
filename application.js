@@ -76,6 +76,7 @@ var firstTest = new Vue({
   methods:{
      getNextData: function () {
        if (this.currentValue == this.questionNumbers - 1){
+         firstAnwsersArray[this.currentValue] = this.inputValue;
          testCondition.firstTestComplete = true;
          testCondition.firstTestShow = false;
          testCondition.secondTestShow = false;
@@ -162,6 +163,7 @@ var secondTest = new Vue({
   methods:{
      getNextData: function () {
        if (this.currentValue == this.questionNumbers - 1){
+         secondAnwsersArray[this.currentValue] = this.inputValue;
          testCondition.secondTestComplete = true;
          testCondition.secondTestShow = false;
          testCondition.thirdTestShow = false;
@@ -242,6 +244,7 @@ var thirdTest = new Vue({
   methods:{
      getNextData: function () {
        if (this.currentValue == this.questionNumbers - 1){
+         thirdAnwsersArray[this.currentValue] = this.inputValue;
          testCondition.thirdTestComplete = true;
          testCondition.thirdTestShow = false;
          testCondition.fourthTestShow = false;
@@ -322,6 +325,7 @@ var fourthTest = new Vue({
   methods:{
      getNextData: function () {
        if (this.currentValue == this.questionNumbers - 1){
+         fourthAnwsersArray[this.currentValue] = this.inputValue;
          testCondition.fourthTestComplete = true;
          testCondition.fourthTestShow = false;
          testCondition.getResultsShow = false;
@@ -396,50 +400,78 @@ var getResults = new Vue({
   data:{
   show: false,
   summ: '',
-  state: testCondition
+  state: testCondition,
+  firstBlockTittle : firstQuestionsArray,
+  secondBlockTittle : secondQuestionsArray,
+  thirdBlockTittle : thirdQuestionsArray,
+  fourthBlockTittle : fourthQuestionsArray,
+  firstAnwsers: firstAnwsersArray,
+  secondAnwsers: secondAnwsersArray,
+  thirdAnwsers: thirdAnwsersArray,
+  fourthAnwsers: fourthAnwsersArray,
+  resultCaption: "Расчитать",
+  firstSum: 0,
+  secondSum: 0,
+  thirdSum: 0,
+  fourthSum: 0,
+  additionalDebt: 0,
 },
   methods:{
     getResults: function (){
       if (!this.show){
        this.show = true;
+       this.resultCaption = "Спрятать";
       } else {
         this.show = false;
+        this.resultCaption = "Расчитать";
       }
 
-    console.log("OK");
-    console.log(firstAnwsersArray[0]);
-    console.log(firstAnwsersArray[0] + firstAnwsersArray[1])
+      for (i = 0; i < firstQuestionsArray.length - 1; ++i){
+        this.firstBlockTittle[i] = firstQuestionsArray[i];
+        this.firstAnwsers[i] = parseFloat(firstAnwsersArray[i]);
+        this.firstSum += this.firstAnwsers[i];
+      }
+      for (i = 0; i < secondQuestionsArray.length - 1; ++i){
+        this.secondBlockTittle[i] = secondQuestionsArray[i];
+        this.secondAnwsers[i] = parseFloat(secondAnwsersArray[i]);
+        this.secondSum += this.secondAnwsers[i];
+      }
+      for (i = 0; i < thirdQuestionsArray.length - 1; ++i){
+        this.thirdBlockTittle[i] = thirdQuestionsArray[i];
+        this.thirdAnwsers[i] = parseFloat(thirdAnwsersArray[i]);
+      }
+      for (i = 0; i < fourthQuestionsArray.length - 1; ++i){
+        this.fourthBlockTittle[i] = fourthQuestionsArray[i];
+        this.fourthAnwsers[i] = parseFloat(fourthAnwsersArray[i]);
+      }
+
+    this.additionalDebt = this.secondSum/this.fourthAnwsers[1];
+    this.firstSum = this.firstSum - this.firstAnwsers[1];
+    this.summ = ((this.firstSum) * this.fourthAnwsers[0])/ (this.fourthAnwsers[0] + this.firstAnwsers[1] + this.additionalDebt);
   },
+  recalculate: function(){
+    for (i = 0; i < firstQuestionsArray.length - 1; ++i){
+      if (this.firstAnwsers[i] = null){
 
+      } else {
+       this.firstSum += this.firstAnwsers[i];
+       firstAnwsersArray[i] = this.firstAnwsers[i];
+     }
+     }
+    for (i = 0; i < secondQuestionsArray.length - 1; ++i){
+      this.secondSum += this.secondAnwsers[i];
+      secondAnwsersArray[i] = this.secondAnwsers[i];
+    }
+    for (i = 0; i < thirdQuestionsArray.length - 1; ++i){
+      thirdAnwsersArray[i] = this.thirdAnwsers[i];
+    }
+    for (i = 0; i < fourthQuestionsArray.length - 1; ++i){
+      fourthAnwsersArray[i] = this.fourthAnwsers[i];
+    }
+    this.additionalDebt = this.secondSum/this.fourthAnwsers[1];
+    this.firstSum = this.firstSum - this.firstAnwsers[1];
+    this.summ = ((this.firstSum) * this.fourthAnwsers[0])/ (this.fourthAnwsers[0] + this.firstAnwsers[1] + this.additionalDebt);
   }
-})
+},
 
-
-
-var alertTest = new Vue({
-  //el: "#testDialog",
-  data: () => ({
-   alert: {
-     content: 'Введите числовое значение!',
-     ok: 'Хорошо'
-   },
-   alert2: {
-     title: 'Post created!',
-     contentHtml: 'Your post <strong>Material Design is awesome</strong> has been created.'
-   }
- }),
- methods: {
-   openDialog(ref) {
-     this.$refs[ref].open();
-   },
-   closeDialog(ref) {
-     this.$refs[ref].close();
-   },
-   onOpen() {
-     console.log('Opened');
-   },
-   onClose(type) {
-     console.log('Closed', type);
-   }
- }
 })

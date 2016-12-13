@@ -122,130 +122,141 @@
 <div id ="getResults" v-md-theme="'default'" v-if="state.fourthTestComplete">
 <md-whiteframe md-elevation="7">
 <div id ="ResultButton">
-  <md-button class="md-raised md-primary" v-on:click="getResults">Расчитать</md-button>
+  <md-button class="md-raised md-primary" v-on:click="getResults">{{resultCaption}}</md-button>
   <div id = "resultsView" v-if="show" tabindex="0">
-    <p><span class="md-title">Указанная стоимость за одну доставку:</span>
-    <p><span class="md-title">Реальная стоимость одной доставки:</span>
-    <p><span class="md-display-1">{{summ}}</span>
 
       <div id class = "table">
       <div class = "anwsersBlock">
+        <p><span class="md-title">Основные расходы: </span><b>
+          <hr>
       <form novalidate @submit.stop.prevent="submit">
         <md-input-container>
-          <label>Оклад</label>
-          <md-input v-model=inputValue type="number"></md-input>
+          <label>{{firstBlockTittle[0]}}</label>
+          <md-input v-model=firstAnwsers[0] type="number"></md-input>
         </md-input-container>
       </form>
       <form novalidate @submit.stop.prevent="submit">
         <md-input-container>
-          <label>{{defaultCaption}}</label>
-          <md-input v-model=inputValue type="number"></md-input>
+          <label>{{firstBlockTittle[1]}}</label>
+          <md-input v-model=firstAnwsers[1] type="number"></md-input>
         </md-input-container>
       </form>
       <form novalidate @submit.stop.prevent="submit">
         <md-input-container>
-          <label>{{defaultCaption}}</label>
-          <md-input v-model=inputValue type="number"></md-input>
+          <label>{{firstBlockTittle[2]}}</label>
+          <md-input v-model=firstAnwsers[2] type="number"></md-input>
         </md-input-container>
       </form>
       <form novalidate @submit.stop.prevent="submit">
         <md-input-container>
-          <label>{{defaultCaption}}</label>
-          <md-input v-model=inputValue type="number"></md-input>
+          <label>{{firstBlockTittle[3]}}</label>
+          <md-input v-model=firstAnwsers[3] type="number"></md-input>
         </md-input-container>
       </form>
       <form novalidate @submit.stop.prevent="submit">
         <md-input-container>
-          <label>{{defaultCaption}}</label>
-          <md-input v-model=inputValue type="number"></md-input>
+          <label>{{firstBlockTittle[4]}}</label>
+          <md-input v-model=firstAnwsers[4] type="number"></md-input>
         </md-input-container>
       </form>
+      <p><span class="md-title">{{firstSum}} </span><b>
     </div>
 
     <div class = "anwsersBlock">
+      <p><span class="md-title">Косвенные расходы: </span><b>
+        <hr>
     <form novalidate @submit.stop.prevent="submit">
       <md-input-container>
-        <label>Оклад</label>
-        <md-input v-model=inputValue type="number"></md-input>
+        <label>{{secondBlockTittle[0]}}</label>
+        <md-input v-model=secondAnwsers[0] type="number"></md-input>
       </md-input-container>
     </form>
     <form novalidate @submit.stop.prevent="submit">
       <md-input-container>
-        <label>{{defaultCaption}}</label>
-        <md-input v-model=inputValue type="number"></md-input>
+        <label>{{secondBlockTittle[1]}}</label>
+        <md-input v-model=secondAnwsers[1] type="number"></md-input>
       </md-input-container>
     </form>
     <form novalidate @submit.stop.prevent="submit">
       <md-input-container>
-        <label>{{defaultCaption}}</label>
-        <md-input v-model=inputValue type="number"></md-input>
+        <label>{{secondBlockTittle[2]}}</label>
+        <md-input v-model=secondAnwsers[2] type="number"></md-input>
       </md-input-container>
     </form>
     <form novalidate @submit.stop.prevent="submit">
       <md-input-container>
-        <label>{{defaultCaption}}</label>
-        <md-input v-model=inputValue type="number"></md-input>
+        <label>{{secondBlockTittle[3]}}</label>
+        <md-input v-model=secondAnwsers[3] type="number"></md-input>
       </md-input-container>
     </form>
     <form novalidate @submit.stop.prevent="submit">
       <md-input-container>
-        <label>{{defaultCaption}}</label>
-        <md-input v-model=inputValue type="number"></md-input>
+        <label>{{secondBlockTittle[4]}}</label>
+        <md-input v-model=secondAnwsers[4] type="number"></md-input>
       </md-input-container>
     </form>
     <form novalidate @submit.stop.prevent="submit">
       <md-input-container>
-        <label>{{defaultCaption}}</label>
-        <md-input v-model=inputValue type="number"></md-input>
+        <label>{{secondBlockTittle[5]}}</label>
+        <md-input v-model=secondAnwsers[5] type="number"></md-input>
       </md-input-container>
     </form>
     <form novalidate @submit.stop.prevent="submit">
       <md-input-container>
-        <label>{{defaultCaption}}</label>
-        <md-input v-model=inputValue type="number"></md-input>
+        <label>{{secondBlockTittle[6]}}</label>
+        <md-input v-model=secondAnwsers[6] type="number"></md-input>
       </md-input-container>
     </form>
+    <p><span class="md-title">{{secondSum}} </span><b>
   </div>
 
   <div class = "anwsersBlock">
+    <p><span class="md-title">Потери: </span><b>
+      <hr>
   <form novalidate @submit.stop.prevent="submit">
     <md-input-container>
-      <label>Оклад</label>
-      <md-input v-model=inputValue type="number"></md-input>
+      <label>{{thirdBlockTittle[0]}}</label>
+      <md-input v-model=thirdAnwsers[0] type="number"></md-input>
     </md-input-container>
   </form>
   <form novalidate @submit.stop.prevent="submit">
     <md-input-container>
-      <label>{{defaultCaption}}</label>
-      <md-input v-model=inputValue type="number"></md-input>
+      <label>{{thirdBlockTittle[1]}}</label>
+      <md-input v-model=thirdAnwsers[1] type="number"></md-input>
     </md-input-container>
   </form>
   <form novalidate @submit.stop.prevent="submit">
     <md-input-container>
-      <label>{{defaultCaption}}</label>
-      <md-input v-model=inputValue type="number"></md-input>
+      <label>{{thirdBlockTittle[2]}}</label>
+      <md-input v-model=thirdAnwsers[2] type="number"></md-input>
     </md-input-container>
   </form>
 
   </div>
 
   <div class = "anwsersBlock">
+    <p><span class="md-title">Завершающие вопросы: </span><b>
+      <hr>
   <form novalidate @submit.stop.prevent="submit">
     <md-input-container>
-      <label>Оклад</label>
-      <md-input v-model=inputValue type="number"></md-input>
+      <label>{{fourthBlockTittle[0]}}</label>
+      <md-input v-model=fourthAnwsers[0] type="number"></md-input>
     </md-input-container>
   </form>
   <form novalidate @submit.stop.prevent="submit">
     <md-input-container>
-      <label>{{defaultCaption}}</label>
-      <md-input v-model=inputValue type="number"></md-input>
+      <label>{{fourthBlockTittle[1]}}</label>
+      <md-input v-model=fourthAnwsers[1] type="number"></md-input>
     </md-input-container>
   </form>
 
 
   </div>
 </div>
+<md-button class="md-raised md-primary" v-on:click="recalculate">Пересчитать</md-button>
+  <p><span class="md-title">Указанная стоимость за одну доставку: </span><b> {{firstAnwsers[1]}} </b>
+  <p><span class="md-title">Реальная стоимость одной доставки: </span>
+  <p><span class="md-display-1">{{summ}}</span>
   </div>
 </div>
 
