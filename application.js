@@ -44,7 +44,12 @@ var testCondition = {
     firstTestComplete : false,
     secondTestComplete: false,
     thirdTestComplete: false,
-    fourthTestComplete: false
+    fourthTestComplete: false,
+    firstTestShow : true,
+    secondTestShow : true,
+    thirdTestShow : true,
+    fourthTestShow : true,
+    getResultsShow: true
 };
 
 
@@ -70,6 +75,8 @@ var firstTest = new Vue({
      getNextData: function () {
        if (this.currentValue == this.questionNumbers - 1){
          testCondition.firstTestComplete = true;
+         testCondition.firstTestShow = false;
+         testCondition.secondTestShow = false;
        }
        if (this.currentValue < this.questionNumbers - 1){
          console.log(parseFloat(this.inputValue));
@@ -149,6 +156,8 @@ var secondTest = new Vue({
      getNextData: function () {
        if (this.currentValue == this.questionNumbers - 1){
          testCondition.secondTestComplete = true;
+         testCondition.secondTestShow = false;
+         testCondition.thirdTestShow = false;
        }
        if (this.currentValue < this.questionNumbers - 1){
          secondAnwsersArray[this.currentValue] = this.inputValue;
@@ -227,6 +236,8 @@ var thirdTest = new Vue({
      getNextData: function () {
        if (this.currentValue == this.questionNumbers - 1){
          testCondition.thirdTestComplete = true;
+         testCondition.thirdTestShow = false;
+         testCondition.fourthTestShow = false;
        }
        if (this.currentValue < this.questionNumbers - 1){
          thirdAnwsersArray[this.currentValue] = this.inputValue;
@@ -305,6 +316,8 @@ var fourthTest = new Vue({
      getNextData: function () {
        if (this.currentValue == this.questionNumbers - 1){
          testCondition.fourthTestComplete = true;
+         testCondition.fourthTestShow = false;
+         testCondition.getResultsShow = false;
        }
        if (this.currentValue < this.questionNumbers - 1){
          fourthAnwsersArray[this.currentValue] = this.inputValue;

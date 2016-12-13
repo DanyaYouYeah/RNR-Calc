@@ -18,9 +18,9 @@
  <div class = "wrapper">
   <div id = "firstTest"  v-md-theme="'default'">
     <md-whiteframe md-elevation="7">
-    <md-tabs md-fixed v-on:change="show=!show">
+    <md-tabs md-fixed v-on:change="state.firstTestShow=!state.firstTestShow">
     <md-tab id="first_test" md-label="Основные расходы" md-icon="looks_one">
-      <div id ="firstTestContent" v-if="show">
+      <div id ="firstTestContent" v-if="state.firstTestShow">
       <p><span class="md-title">{{questionNumber}}/{{questionNumbers}}</span>
       <p><span class="md-display-1">{{currentQuestion}}</span>
       <p><span class="md-body-2" v-if="discriptionReady">{{questionDiscription}}</span>
@@ -43,9 +43,9 @@
 
 <div id = "secondTest"  v-md-theme="'default'" v-if="state.firstTestComplete">
   <md-whiteframe md-elevation="7">
-  <md-tabs md-fixed v-on:change="show=!show">
+  <md-tabs md-fixed v-on:change="state.secondTestShow=!state.secondTestShow">
   <md-tab id="second_test" md-label="Дополнительные расходы" md-icon="looks_two">
-    <div id ="secondTestContent" v-if="show">
+    <div id ="secondTestContent" v-if="state.secondTestShow">
     <p><span class="md-title">{{questionNumber}}/{{questionNumbers}}</span>
     <p><span class="md-display-1">{{currentQuestion}}</span>
     <p><span class="md-body-2" v-if="discriptionReady">{{questionDiscription}}</span>
@@ -67,9 +67,9 @@
 
 <div id = "thirdTest"  v-md-theme="'default'" v-if="state.secondTestComplete">
   <md-whiteframe md-elevation="7">
-  <md-tabs md-fixed v-on:change="show=!show">
+  <md-tabs md-fixed v-on:change="state.thirdTestShow=!state.thirdTestShow">
   <md-tab id="third_test" md-label="Потери" md-icon="looks_3">
-    <div id ="thirdTestContent" v-if="show">
+    <div id ="thirdTestContent" v-if="state.thirdTestShow">
     <p><span class="md-title">{{questionNumber}}/{{questionNumbers}}</span>
     <p><span class="md-display-1">{{currentQuestion}}</span>
     <p><span class="md-body-2" v-if="discriptionReady">{{questionDiscription}}</span>
@@ -91,9 +91,9 @@
 
 <div id = "fourthTest"  v-md-theme="'default'" v-if="state.thirdTestComplete">
   <md-whiteframe md-elevation="7">
-  <md-tabs md-fixed v-on:change="show=!show">
+  <md-tabs md-fixed v-on:change="state.fourthTestShow=!state.fourthTestShow">
   <md-tab id="fourth_test" md-label="Завершающие вопросы" md-icon="looks_4">
-    <div id ="fourthTestContent" v-if="show">
+    <div id ="fourthTestContent" v-if="state.fourthTestShow">
     <p><span class="md-title">{{questionNumber}}/{{questionNumbers}}</span>
     <p><span class="md-display-1">{{currentQuestion}}</span>
     <p><span class="md-body-2" v-if="discriptionReady">{{questionDiscription}}</span>
