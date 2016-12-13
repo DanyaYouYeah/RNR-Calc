@@ -54,6 +54,8 @@ var testCondition = {
 
 
 
+
+
 var firstTest = new Vue({
   el: '#firstTest',
   data: {
@@ -79,7 +81,8 @@ var firstTest = new Vue({
          testCondition.secondTestShow = false;
        }
        if (this.currentValue < this.questionNumbers - 1){
-         console.log(parseFloat(this.inputValue));
+         if (!(parseFloat(this.inputValue))){
+         }
          firstAnwsersArray[this.currentValue] = this.inputValue;
          ++this.currentValue;
          if ((firstAnwsersArray[this.currentValue] != undefined)|| (firstAnwsersArray[this.currentValue] != 0)){
@@ -129,9 +132,13 @@ var firstTest = new Vue({
      },
      getAnwsersQuantity: function (){
 
+     },
+     showErrorDialog: function(){
+
      }
 
   }
+
 })
 
 
@@ -405,4 +412,34 @@ var getResults = new Vue({
   },
 
   }
+})
+
+
+
+var alertTest = new Vue({
+  //el: "#testDialog",
+  data: () => ({
+   alert: {
+     content: 'Введите числовое значение!',
+     ok: 'Хорошо'
+   },
+   alert2: {
+     title: 'Post created!',
+     contentHtml: 'Your post <strong>Material Design is awesome</strong> has been created.'
+   }
+ }),
+ methods: {
+   openDialog(ref) {
+     this.$refs[ref].open();
+   },
+   closeDialog(ref) {
+     this.$refs[ref].close();
+   },
+   onOpen() {
+     console.log('Opened');
+   },
+   onClose(type) {
+     console.log('Closed', type);
+   }
+ }
 })

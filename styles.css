@@ -1,7 +1,7 @@
 #bHeader{
-  padding-left: 45em;
-  padding-right: 45em;
-  padding-top: 1em;
+  padding-left: 55em;
+  padding-right: 10em;
+  padding-top: 3em;
 }
 
 
@@ -13,12 +13,28 @@
 
 
 .wrapper{
-  margin-left: 45em;
-  margin-right: 45em;
+  margin-left: 25em;
+  margin-right: 25em;
 
   background-color: white;
 }
 
 body{
   background-image: url(images/bg.jpg);
+}
+
+.errorSpan{
+  color: red;
+}
+
+
+.anwsersBlock{
+  display: inline-block;
+  width: 200px;
+  margin:5px;
+  white-space: normal;
+}
+
+.table{
+  white-space: nowrap;
 }

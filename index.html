@@ -11,6 +11,9 @@
 
 
 <body>
+  <md-dialog-alert :md-content="alert.content" :md-ok-text="alert.ok" @open="onOpen" @close="onClose" ref="dialog3">
+  </md-dialog-alert>
+
   <div id ="global">
   <div id ="bHeader">
   <img src ="images/logo.png">
@@ -18,9 +21,9 @@
  <div class = "wrapper">
   <div id = "firstTest"  v-md-theme="'default'">
     <md-whiteframe md-elevation="7">
-    <md-tabs md-fixed v-on:change="state.firstTestShow=!state.firstTestShow">
+    <md-tabs md-fixed v-on:change="state.firstTestShow=!state.firstTestShow" >
     <md-tab id="first_test" md-label="Основные расходы" md-icon="looks_one">
-      <div id ="firstTestContent" v-if="state.firstTestShow">
+      <div id ="firstTestContent" v-if="state.firstTestShow" tabindex="0">
       <p><span class="md-title">{{questionNumber}}/{{questionNumbers}}</span>
       <p><span class="md-display-1">{{currentQuestion}}</span>
       <p><span class="md-body-2" v-if="discriptionReady">{{questionDiscription}}</span>
@@ -28,11 +31,14 @@
         <form novalidate @submit.stop.prevent="submit">
           <md-input-container>
             <label>{{defaultCaption}}</label>
-            <md-input v-model=inputValue></md-input>
-          </md-input-container>
+            <md-input v-model=inputValue type="number"></md-input>
+            </md-input-container>
+            <div class = "errorSpan" v-show="!show"><i class="material-icons">error</i><p><span >Введите числовое значение</span></div>
         </form>
+
         <md-button class="md-raised md-accent" v-on:click="getPrevData">Назад</md-button>
         <md-button class="md-raised md-primary" v-on:click="getNextData">Далее</md-button>
+
     </div>
     </md-tab>
 
@@ -45,7 +51,7 @@
   <md-whiteframe md-elevation="7">
   <md-tabs md-fixed v-on:change="state.secondTestShow=!state.secondTestShow">
   <md-tab id="second_test" md-label="Дополнительные расходы" md-icon="looks_two">
-    <div id ="secondTestContent" v-if="state.secondTestShow">
+    <div id ="secondTestContent" v-if="state.secondTestShow" tabindex="0">
     <p><span class="md-title">{{questionNumber}}/{{questionNumbers}}</span>
     <p><span class="md-display-1">{{currentQuestion}}</span>
     <p><span class="md-body-2" v-if="discriptionReady">{{questionDiscription}}</span>
@@ -53,7 +59,7 @@
       <form novalidate @submit.stop.prevent="submit">
         <md-input-container>
           <label>{{defaultCaption}}</label>
-          <md-input v-model=inputValue></md-input>
+          <md-input v-model=inputValue type="number"></md-input>
         </md-input-container>
       </form>
       <md-button class="md-raised md-accent" v-on:click="getPrevData">Назад</md-button>
@@ -69,7 +75,7 @@
   <md-whiteframe md-elevation="7">
   <md-tabs md-fixed v-on:change="state.thirdTestShow=!state.thirdTestShow">
   <md-tab id="third_test" md-label="Потери" md-icon="looks_3">
-    <div id ="thirdTestContent" v-if="state.thirdTestShow">
+    <div id ="thirdTestContent" v-if="state.thirdTestShow" tabindex="0">
     <p><span class="md-title">{{questionNumber}}/{{questionNumbers}}</span>
     <p><span class="md-display-1">{{currentQuestion}}</span>
     <p><span class="md-body-2" v-if="discriptionReady">{{questionDiscription}}</span>
@@ -77,7 +83,7 @@
       <form novalidate @submit.stop.prevent="submit">
         <md-input-container>
           <label>{{defaultCaption}}</label>
-          <md-input v-model=inputValue></md-input>
+          <md-input v-model=inputValue type="number"></md-input>
         </md-input-container>
       </form>
       <md-button class="md-raised md-accent" v-on:click="getPrevData">Назад</md-button>
@@ -93,7 +99,7 @@
   <md-whiteframe md-elevation="7">
   <md-tabs md-fixed v-on:change="state.fourthTestShow=!state.fourthTestShow">
   <md-tab id="fourth_test" md-label="Завершающие вопросы" md-icon="looks_4">
-    <div id ="fourthTestContent" v-if="state.fourthTestShow">
+    <div id ="fourthTestContent" v-if="state.fourthTestShow" tabindex="0">
     <p><span class="md-title">{{questionNumber}}/{{questionNumbers}}</span>
     <p><span class="md-display-1">{{currentQuestion}}</span>
     <p><span class="md-body-2" v-if="discriptionReady">{{questionDiscription}}</span>
@@ -101,7 +107,7 @@
       <form novalidate @submit.stop.prevent="submit">
         <md-input-container>
           <label>{{defaultCaption}}</label>
-          <md-input v-model=inputValue></md-input>
+          <md-input v-model=inputValue type="number"></md-input>
         </md-input-container>
       </form>
       <md-button class="md-raised md-accent" v-on:click="getPrevData">Назад</md-button>
@@ -117,14 +123,140 @@
 <md-whiteframe md-elevation="7">
 <div id ="ResultButton">
   <md-button class="md-raised md-primary" v-on:click="getResults">Расчитать</md-button>
-  <div id = "resultsView" v-if="show">
+  <div id = "resultsView" v-if="show" tabindex="0">
     <p><span class="md-title">Указанная стоимость за одну доставку:</span>
     <p><span class="md-title">Реальная стоимость одной доставки:</span>
     <p><span class="md-display-1">{{summ}}</span>
+
+      <div id class = "table">
+      <div class = "anwsersBlock">
+      <form novalidate @submit.stop.prevent="submit">
+        <md-input-container>
+          <label>Оклад</label>
+          <md-input v-model=inputValue type="number"></md-input>
+        </md-input-container>
+      </form>
+      <form novalidate @submit.stop.prevent="submit">
+        <md-input-container>
+          <label>{{defaultCaption}}</label>
+          <md-input v-model=inputValue type="number"></md-input>
+        </md-input-container>
+      </form>
+      <form novalidate @submit.stop.prevent="submit">
+        <md-input-container>
+          <label>{{defaultCaption}}</label>
+          <md-input v-model=inputValue type="number"></md-input>
+        </md-input-container>
+      </form>
+      <form novalidate @submit.stop.prevent="submit">
+        <md-input-container>
+          <label>{{defaultCaption}}</label>
+          <md-input v-model=inputValue type="number"></md-input>
+        </md-input-container>
+      </form>
+      <form novalidate @submit.stop.prevent="submit">
+        <md-input-container>
+          <label>{{defaultCaption}}</label>
+          <md-input v-model=inputValue type="number"></md-input>
+        </md-input-container>
+      </form>
+    </div>
+
+    <div class = "anwsersBlock">
+    <form novalidate @submit.stop.prevent="submit">
+      <md-input-container>
+        <label>Оклад</label>
+        <md-input v-model=inputValue type="number"></md-input>
+      </md-input-container>
+    </form>
+    <form novalidate @submit.stop.prevent="submit">
+      <md-input-container>
+        <label>{{defaultCaption}}</label>
+        <md-input v-model=inputValue type="number"></md-input>
+      </md-input-container>
+    </form>
+    <form novalidate @submit.stop.prevent="submit">
+      <md-input-container>
+        <label>{{defaultCaption}}</label>
+        <md-input v-model=inputValue type="number"></md-input>
+      </md-input-container>
+    </form>
+    <form novalidate @submit.stop.prevent="submit">
+      <md-input-container>
+        <label>{{defaultCaption}}</label>
+        <md-input v-model=inputValue type="number"></md-input>
+      </md-input-container>
+    </form>
+    <form novalidate @submit.stop.prevent="submit">
+      <md-input-container>
+        <label>{{defaultCaption}}</label>
+        <md-input v-model=inputValue type="number"></md-input>
+      </md-input-container>
+    </form>
+    <form novalidate @submit.stop.prevent="submit">
+      <md-input-container>
+        <label>{{defaultCaption}}</label>
+        <md-input v-model=inputValue type="number"></md-input>
+      </md-input-container>
+    </form>
+    <form novalidate @submit.stop.prevent="submit">
+      <md-input-container>
+        <label>{{defaultCaption}}</label>
+        <md-input v-model=inputValue type="number"></md-input>
+      </md-input-container>
+    </form>
+  </div>
+
+  <div class = "anwsersBlock">
+  <form novalidate @submit.stop.prevent="submit">
+    <md-input-container>
+      <label>Оклад</label>
+      <md-input v-model=inputValue type="number"></md-input>
+    </md-input-container>
+  </form>
+  <form novalidate @submit.stop.prevent="submit">
+    <md-input-container>
+      <label>{{defaultCaption}}</label>
+      <md-input v-model=inputValue type="number"></md-input>
+    </md-input-container>
+  </form>
+  <form novalidate @submit.stop.prevent="submit">
+    <md-input-container>
+      <label>{{defaultCaption}}</label>
+      <md-input v-model=inputValue type="number"></md-input>
+    </md-input-container>
+  </form>
+
+  </div>
+
+  <div class = "anwsersBlock">
+  <form novalidate @submit.stop.prevent="submit">
+    <md-input-container>
+      <label>Оклад</label>
+      <md-input v-model=inputValue type="number"></md-input>
+    </md-input-container>
+  </form>
+  <form novalidate @submit.stop.prevent="submit">
+    <md-input-container>
+      <label>{{defaultCaption}}</label>
+      <md-input v-model=inputValue type="number"></md-input>
+    </md-input-container>
+  </form>
+
+
   </div>
 </div>
+  </div>
+</div>
+
 </md-whiteframe>
 </div>
+
+
+
+
+
+
 </div>
 </div>
   <script src ="application.js"></script>
