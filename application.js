@@ -399,7 +399,7 @@ var getResults = new Vue({
   el: '#getResults',
   data:{
   show: false,
-  summ: '',
+  summ: 0,
   state: testCondition,
   firstBlockTittle : firstQuestionsArray,
   secondBlockTittle : secondQuestionsArray,
@@ -425,22 +425,27 @@ var getResults = new Vue({
         this.show = false;
         this.resultCaption = "Расчитать";
       }
-
-      for (i = 0; i < firstQuestionsArray.length - 1; ++i){
+      this.firstSum = 0;
+      this.secondSum = 0;
+      this.thirdSum = 0;
+      this.fourthSum = 0;
+      this.additionalDebt = 0;
+      this.summ = 0;
+      for (i = 0; i < firstQuestionsArray.length; ++i){
         this.firstBlockTittle[i] = firstQuestionsArray[i];
         this.firstAnwsers[i] = parseFloat(firstAnwsersArray[i]);
-        this.firstSum += this.firstAnwsers[i];
+        this.firstSum = this.firstSum +  this.firstAnwsers[i];
       }
-      for (i = 0; i < secondQuestionsArray.length - 1; ++i){
+      for (i = 0; i < secondQuestionsArray.length; ++i){
         this.secondBlockTittle[i] = secondQuestionsArray[i];
         this.secondAnwsers[i] = parseFloat(secondAnwsersArray[i]);
         this.secondSum += this.secondAnwsers[i];
       }
-      for (i = 0; i < thirdQuestionsArray.length - 1; ++i){
+      for (i = 0; i < thirdQuestionsArray.length; ++i){
         this.thirdBlockTittle[i] = thirdQuestionsArray[i];
         this.thirdAnwsers[i] = parseFloat(thirdAnwsersArray[i]);
       }
-      for (i = 0; i < fourthQuestionsArray.length - 1; ++i){
+      for (i = 0; i < fourthQuestionsArray.length; ++i){
         this.fourthBlockTittle[i] = fourthQuestionsArray[i];
         this.fourthAnwsers[i] = parseFloat(fourthAnwsersArray[i]);
       }
@@ -450,22 +455,22 @@ var getResults = new Vue({
     this.summ = ((this.firstSum) * this.fourthAnwsers[0])/ (this.fourthAnwsers[0] + this.firstAnwsers[1] + this.additionalDebt);
   },
   recalculate: function(){
-    for (i = 0; i < firstQuestionsArray.length - 1; ++i){
-      if (this.firstAnwsers[i] = null){
+    for (i = 0; i < firstQuestionsArray.length; ++i){
+      if (isNaN(this.firstAnwsers[i])){
 
       } else {
        this.firstSum += this.firstAnwsers[i];
        firstAnwsersArray[i] = this.firstAnwsers[i];
      }
      }
-    for (i = 0; i < secondQuestionsArray.length - 1; ++i){
+    for (i = 0; i < secondQuestionsArray.length; ++i){
       this.secondSum += this.secondAnwsers[i];
       secondAnwsersArray[i] = this.secondAnwsers[i];
     }
-    for (i = 0; i < thirdQuestionsArray.length - 1; ++i){
+    for (i = 0; i < thirdQuestionsArray.length; ++i){
       thirdAnwsersArray[i] = this.thirdAnwsers[i];
     }
-    for (i = 0; i < fourthQuestionsArray.length - 1; ++i){
+    for (i = 0; i < fourthQuestionsArray.length; ++i){
       fourthAnwsersArray[i] = this.fourthAnwsers[i];
     }
     this.additionalDebt = this.secondSum/this.fourthAnwsers[1];

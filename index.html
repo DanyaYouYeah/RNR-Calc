@@ -36,9 +36,12 @@
             <div class = "errorSpan" v-show="!show"><i class="material-icons">error</i><p><span >Введите числовое значение</span></div>
         </form>
 
-        <md-button class="md-raised md-accent" v-on:click="getPrevData">Назад</md-button>
-        <md-button class="md-raised md-primary" v-on:click="getNextData">Далее</md-button>
 
+
+    </div>
+    <div id = "firstButtons" v-if="state.firstTestShow">
+    <md-button class="md-raised md-accent" v-on:click="getPrevData">Назад</md-button>
+    <md-button class="md-raised md-primary" v-on:click="getNextData">Далее</md-button>
     </div>
     </md-tab>
 
@@ -62,8 +65,11 @@
           <md-input v-model=inputValue type="number"></md-input>
         </md-input-container>
       </form>
-      <md-button class="md-raised md-accent" v-on:click="getPrevData">Назад</md-button>
-      <md-button class="md-raised md-primary" v-on:click="getNextData">Далее</md-button>
+
+  </div>
+  <div id = "secondButtons" v-if="state.secondTestShow">
+  <md-button class="md-raised md-accent" v-on:click="getPrevData">Назад</md-button>
+  <md-button class="md-raised md-primary" v-on:click="getNextData">Далее</md-button>
   </div>
   </md-tab>
 
@@ -86,8 +92,11 @@
           <md-input v-model=inputValue type="number"></md-input>
         </md-input-container>
       </form>
-      <md-button class="md-raised md-accent" v-on:click="getPrevData">Назад</md-button>
-      <md-button class="md-raised md-primary" v-on:click="getNextData">Далее</md-button>
+
+  </div>
+  <div id = "thirdButtons" v-if="state.thirdTestShow">
+  <md-button class="md-raised md-accent" v-on:click="getPrevData">Назад</md-button>
+  <md-button class="md-raised md-primary" v-on:click="getNextData">Далее</md-button>
   </div>
   </md-tab>
 
@@ -110,8 +119,11 @@
           <md-input v-model=inputValue type="number"></md-input>
         </md-input-container>
       </form>
-      <md-button class="md-raised md-accent" v-on:click="getPrevData">Назад</md-button>
-      <md-button class="md-raised md-primary" v-on:click="getNextData">Далее</md-button>
+
+  </div>
+  <div id = "fourthButtons" v-if="state.fourthTestShow">
+  <md-button class="md-raised md-accent" v-on:click="getPrevData">Назад</md-button>
+  <md-button class="md-raised md-primary" v-on:click="getNextData">Далее</md-button>
   </div>
   </md-tab>
 
