@@ -261,6 +261,18 @@
       <md-input v-model=fourthAnwsers[1] type="number"></md-input>
     </md-input-container>
   </form>
+  <form novalidate @submit.stop.prevent="submit">
+    <md-input-container>
+      <label>{{fourthBlockTittle[2]}}</label>
+      <md-input v-model=fourthAnwsers[2] type="number"></md-input>
+    </md-input-container>
+  </form>
+  <form novalidate @submit.stop.prevent="submit">
+    <md-input-container>
+      <label>{{fourthBlockTittle[3]}}</label>
+      <md-input v-model=fourthAnwsers[3] type="number"></md-input>
+    </md-input-container>
+  </form>
 
 
   </div>
@@ -269,10 +281,19 @@
   <p><span class="md-title">Указанная стоимость за одну доставку: </span><b> {{firstAnwsers[1]}} </b>
   <p><span class="md-title">Реальная стоимость одной доставки: </span>
   <p><span class="md-display-1">{{summ}}</span>
+    <div id="getMyRunnerBlock">
+    <p><span class="md-title">В Сервисе MYRUNNER СТОИМОСТЬ ОДНОЙ ЗАЯВКИ 150₽</span>
+      <p><span class="md-body-2">(+30₽ в день за использование нашего тарифного плана)</span>
+      <md-button class="md-raised md-accent" v-on:click="">РЕГИСТРАЦИЯ НА ТРИАЛЬНЫЙ ТАРИФ</md-button>
+    <p></md-whiteframe>
+    </div>
   </div>
+
 </div>
 
-</md-whiteframe>
+
+<hr>
+
 </div>
 
 

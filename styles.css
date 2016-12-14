@@ -52,5 +52,15 @@ body{
 }
 
 #fourthTestContent{
-  height: 270px;
+  height: 200px;
+}
+
+#getMyRunnerBlock{
+  padding: 20px;
+  display: -webkit-flex;
+   display: flex;
+   -webkit-flex-wrap: wrap;
+   flex-wrap: wrap;
+   -webkit-align-content: center;
+   align-content: center;
 }
